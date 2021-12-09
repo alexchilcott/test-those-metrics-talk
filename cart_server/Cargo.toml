@@ -1,0 +1,40 @@
+[package]
+name = "cart_server"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+actix-web = "4.0.0-beta.10"
+actix-web-prom = "0.6.0-beta.3"
+anyhow = "1"
+reqwest = { version = "0.11", features = ["json"] }
+reqwest-middleware = "0.1"
+reqwest-tracing = { version = "0.1", features = ["opentelemetry_0_14"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+tracing = "0.1"
+tracing-actix-web = { version = "0.5.0-beta.1", features = [
+    "opentelemetry_0_14",
+] }
+tracing-futures = "0.2.5"
+tracing-opentelemetry = "0.13"
+tracing-subscriber = { version = "0.2", features = ["registry"] }
+opentelemetry = { version = "0.14", features = ["serialize", "rt-tokio"] }
+opentelemetry-jaeger = { version = "0.13.0", features = [
+    "collector_client",
+    "reqwest_collector_client",
+] }
+
+[dev-dependencies]
+mock_otel_collector = { path = "../mock_otel_collector" }
+actix-rt = "2"
+tokio = { version = "1", features = ["sync"] }
+wiremock = "0.5"
+uuid = { version = "0.8", features = ["v4"] }
+serde_json = "1"
+# The prometheus-parse crate is not yet published to crates.rs
+prometheus-parse = { git = "https://github.com/ccakes/prometheus-parse-rs", rev = "a4574e9" }
+thiserror = "1"
+rctree = "0.4.0"

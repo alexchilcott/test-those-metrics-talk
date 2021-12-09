@@ -1,0 +1,2 @@
+[workspace]
+members = ["cart_server", "mock_otel_collector"]
